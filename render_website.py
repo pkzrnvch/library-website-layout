@@ -1,8 +1,12 @@
-from jinja2 import Environment, FileSystemLoader, select_autoescape
 import json
 
+from livereload import Server
+from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-def render_page(books_metadata):
+
+def rebuild():
+    with open('book_descriptions.json') as json_file:
+        books_metadata = json.load(json_file)
     env = Environment(
         loader=FileSystemLoader('.'),
         autoescape=select_autoescape(['html', 'xml'])
@@ -16,9 +20,10 @@ def render_page(books_metadata):
 
 
 def main():
-    with open('book_descriptions.json') as json_file:
-        books_metadata = json.load(json_file)
-    render_page(books_metadata)
+    rebuild()
+    server = Server()
+    server.watch('template.html', rebuild)
+    server.serve(root='.')
 
 
 if __name__ == '__main__':
