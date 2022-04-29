@@ -2,6 +2,7 @@ import math
 import os
 import json
 from math import ceil
+from pathlib import Path
 
 from livereload import Server
 from more_itertools import chunked
@@ -27,7 +28,7 @@ def rebuild():
             total_pages=total_pages,
             current_page_number=page,
         )
-        with open(f'./pages/index{page}.html', 'w', encoding="utf8") as file:
+        with open(f'./pages/index{page}.html', 'w', encoding='utf8') as file:
             file.write(rendered_page)
 
 
