@@ -1,3 +1,4 @@
+import os
 import json
 
 from livereload import Server
@@ -6,19 +7,23 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 
 def rebuild():
+    os.makedirs('./pages', exist_ok=True)
+    books_per_page = 20
     with open('book_descriptions.json') as json_file:
         books = json.load(json_file)
-    books_chunked = list(chunked(books, 2))
+    book_chunks = list(chunked(books, books_per_page))
     env = Environment(
         loader=FileSystemLoader('.'),
         autoescape=select_autoescape(['html', 'xml'])
     )
     template = env.get_template('template.html')
-    rendered_page = template.render(
-        books=books_chunked
-    )
-    with open('index.html', 'w', encoding="utf8") as file:
-        file.write(rendered_page)
+    for page, book_chunk in enumerate(book_chunks, start=1):
+        book_pairs = list(chunked(book_chunk, 2))
+        rendered_page = template.render(
+            book_pairs=book_pairs
+        )
+        with open(f'./pages/index{page}.html', 'w', encoding="utf8") as file:
+            file.write(rendered_page)
 
 
 def main():
