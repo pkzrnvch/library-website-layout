@@ -15,7 +15,11 @@ Run local server using:
 ```
 python render_website.py
 ```
-The website will be available at `http://127.0.0.1:5500/index1.html`
+After that you can access the website by following `http://127.0.0.1:5500/index1.html`
+
+### Website preview
+
+The website is available for preview [here](http://127.0.0.1:5500/index1.html) 
 
 ### Project Goals
 
