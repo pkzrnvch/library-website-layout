@@ -19,7 +19,7 @@ After that you can access the website by following `http://127.0.0.1:5500/index1
 
 ### Website preview
 
-The website is available for preview [here](http://127.0.0.1:5500/index1.html) 
+The website is available for preview [here](https://pkzrnvch.github.io/library-website-layout/pages/index1.html). 
 
 ### Project Goals
 
