@@ -1,6 +1,6 @@
 # Library website layout
 
-Website with books downloaded from [tululu.org](https://tululu.org) website.
+Website with books downloaded from [tululu.org](https://tululu.org) online library.
 
 ### How to install
 
@@ -15,7 +15,7 @@ Run local server using:
 ```
 python render_website.py
 ```
-After that you can access the website by following `http://127.0.0.1:5500/index1.html`
+After that you can access the website using the following link: `http://127.0.0.1:5500/index1.html`
 
 ### Website preview
 
